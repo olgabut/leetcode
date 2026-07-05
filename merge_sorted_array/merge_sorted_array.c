@@ -3,10 +3,8 @@ C language
 Run
 >> cc merge_sorder_array.c
 >> ./a.out
->> leaks --atExit -- ./a.out // for MacOS
 */
 
-#include <stdlib.h>
 #include <stdio.h>
 
 
@@ -47,80 +45,50 @@ void print_arr(int *arr, int size)
 
 void example1()
 {
-	int *num1;
-	int m;
-	int *num2;
-	int n;
+	int m = 3;
+	int n = 3;
+	int num1[6] = {1,2,3,0,0,0};
+	int num2[3] = {2,5,6};
 
-	m = 3;
-	n = 3;
-	num1 = calloc(m + n, sizeof(int));
-	num1[0] = 1;
-	num1[1] = 2;
-	num1[2] = 3;
-	num1[3] = 0;
-	num1[4] = 0;
-	num1[5] = 0;
 	printf("num1 = ");
 	print_arr(num1, m + n);
-	num2 = calloc (n, sizeof(int));
-	num2[0] = 2;
-	num2[1] = 5;
-	num2[2] = 6;
 	printf("num2 = ");
 	print_arr(num2, n);
 	merge(num1, m+n, m, num2, n, n);
 	printf("num1 after merge = ");
 	print_arr(num1, m + n);
-	free(num1);
-	free(num2);
 }
 
 void example2()
 {
-	int *num1;
-	int m;
-	int *num2;
-	int n;
+	int m = 1;
+	int n = 0;
+	int num1[1] = {1};
+	int num2[0] = {};
 
-	m = 1;
-	n = 0;
-	num1 = calloc(m + n, sizeof(int));
-	num1[0] = 1;
 	printf("num1 = ");
 	print_arr(num1, m + n);
-	num2 = calloc (n, sizeof(int));
 	printf("num2 = ");
 	print_arr(num2, n);
 	merge(num1, m+n, m, num2, n, n);
 	printf("num1 after merge = ");
 	print_arr(num1, m + n);
-	free(num1);
-	free(num2);
 }
 
 void example3()
 {
-	int *num1;
-	int m;
-	int *num2;
-	int n;
+	int m = 0;
+	int n = 1;
+	int num1[1] = {0};
+	int num2[1] = {1};
 
-	m = 0;
-	n = 1;
-	num1 = calloc(m + n, sizeof(int));
-	num1[0] = 0;
 	printf("num1 = ");
 	print_arr(num1, m + n);
-	num2 = calloc (n, sizeof(int));
-	num2[0] = 1;
 	printf("num2 = ");
 	print_arr(num2, n);
 	merge(num1, m+n, m, num2, n, n);
 	printf("num1 after merge = ");
 	print_arr(num1, m + n);
-	free(num1);
-	free(num2);
 }
 
 int main()
