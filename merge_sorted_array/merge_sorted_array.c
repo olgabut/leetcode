@@ -12,24 +12,24 @@ void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n)
 {
 	int i1;
 	int i2;
-	int ifin;
+	int iresult;
 
 	if (n == 0)
 		return ;
 	i1 = m - 1;
 	i2 = n - 1;
-	for (ifin = n + m - 1; ifin >= 0; ifin--)
+	for (iresult = n + m - 1; iresult >= 0; iresult--)
 	{
 		if (i1 < 0)
-			nums1[ifin] = nums2[i2--];
+			nums1[iresult] = nums2[i2--];
 		else if (i2 < 0)
-			nums1[ifin] = nums1[i1--];
+			nums1[iresult] = nums1[i1--];
 		else
 		{
 			if (nums1[i1] > nums2[i2])
-				nums1[ifin] = nums1[i1--];
+				nums1[iresult] = nums1[i1--];
 			else
-				nums1[ifin] = nums2[i2--];
+				nums1[iresult] = nums2[i2--];
 		}
 	}
 }
